@@ -1,0 +1,7 @@
+Recieve Key from user
+Check if key is a number
+Reject key if more than one command line argument
+Reject key if string is not within 0-9
+Convert argv[1] into an int
+Prompt user for plaintext
+For each character in plaintext, rotate the character if it is a letter
