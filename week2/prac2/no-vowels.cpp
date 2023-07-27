@@ -8,7 +8,7 @@ string replace(string word);
 
 // Checks if the user command meets the requirements
 // char*argv[] is to prevent an compiler error. Not sure how it works but it does
-int main( int argc, char*argv[])
+int main(int argc, char*argv[])
 {
     if (argc == 2)
     {
