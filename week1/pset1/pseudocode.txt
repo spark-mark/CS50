@@ -1,0 +1,13 @@
+prompt user for number
+number is the number of rows there will be, and the max amount of #s there will be 
+loop that prints each layer based on input number
+    loop that increments upwards to print spaces
+        loop that increments downwards to print #
+        so we want the amount of loops to increase by 1 every time it is executed until it has looped 
+        exactly i amount of times. it starts at 1 loop 
+    loop that prints a constant center row of spaces
+    loop that incremeents upwards to print # on the right side of the pyramid
+
+
+
+    

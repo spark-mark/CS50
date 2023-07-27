@@ -1,0 +1,9 @@
+prompt user for number of cents, reprompt if they enter a negative number
+calculate quarters to return the number of quarters
+for (int i; cents - 25 > 0; i++)
+{
+    quarters++;
+    cents -= 25
+} 
+
+do the same for all other things
