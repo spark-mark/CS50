@@ -3,6 +3,8 @@
 #include <string.h>
 #include <time.h>
 
+using namespace std;
+
 // each of the text files contains 1000 words
 #define LISTSIZE 1000
 
@@ -22,15 +24,27 @@ string get_guess(int wordsize);
 int check_word(string guess, int wordsize, int status[], string choice);
 void print_word(string guess, int wordsize, int status[]);
 
-int main(int argc, string argv[])
+int main(int argc, char*argv[])
 {
     // ensure proper usage
-    // TODO #1
+    if (argc != 2)
+    {
+        cout << "Usage: ./wordle wordsize";
+        return 1;
+    }
 
     int wordsize = 0;
 
     // ensure argv[1] is either 5, 6, 7, or 8 and store that value in wordsize instead
-    // TODO #2
+    if (stoi(argv[1]) >= 5 && stoi(argv[1]) <= 8)
+    {
+        wordsize = stoi(argv[1]);
+    }
+    else
+    {
+        cout << "Error: wordsize must be either 5, 6, 7, or 8";
+        return 1;
+    }
 
     // open correct file, each file has exactly LISTSIZE words
     char wl_filename[6];
@@ -59,7 +73,7 @@ int main(int argc, string argv[])
     bool won = false;
 
     // print greeting, using ANSI color codes to demonstrate
-    printf(GREEN"This is WORDLE50"RESET"\n");
+    printf(GREEN "This is WORDLE50" RESET "\n");
     printf("You have %i tries to guess the %i-letter word I'm thinking of\n", guesses, wordsize);
 
     // main game loop, one iteration for each guess
