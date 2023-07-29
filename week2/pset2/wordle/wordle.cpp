@@ -107,14 +107,14 @@ int main(int argc, char*argv[])
         }
     }
 
-    // Print the game's result
-    if (won = true)
+    // print the game's result
+    if (won == true)
     {
-        printf("You won!");
+        cout << "You won!";
     }
     else
     {
-        printf("The %i-letter word was: %s. Thanks for playing!", wordsize, choice);
+        cout << "The " << wordsize << "-letter word was: " << choice << ". Thanks for playing!";
     }
 
     return 0;
