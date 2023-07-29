@@ -86,7 +86,10 @@ int main(int argc, char*argv[])
         int status[wordsize];
 
         // set all elements of status array initially to 0, aka WRONG
-        // TODO #4
+        for (int i = 0; i < wordsize; i++)
+        {
+            status[i] = 0;
+        }
 
         // Calculate score for the guess
         int score = check_word(guess, wordsize, status, choice);
@@ -105,9 +108,15 @@ int main(int argc, char*argv[])
     }
 
     // Print the game's result
-    // TODO #7
+    if (won = true)
+    {
+        printf("You won!");
+    }
+    else
+    {
+        printf("The %i-letter word was: %s. Thanks for playing!", wordsize, choice);
+    }
 
-    // that's all folks!
     return 0;
 }
 
@@ -116,7 +125,12 @@ string get_guess(int wordsize)
     string guess = "";
 
     // ensure users actually provide a guess that is the correct length
-    // TODO #3
+    do
+    {
+        cout << "Input a " << wordsize << "-letter word: ";
+        cin >> guess;
+    }
+    while (guess.length() != wordsize);
 
     return guess;
 }
@@ -126,15 +140,26 @@ int check_word(string guess, int wordsize, int status[], string choice)
     int score = 0;
 
     // compare guess to choice and score points as appropriate, storing points in status
-    // TODO #5
-
-    // HINTS
-    // iterate over each letter of the guess
-        // iterate over each letter of the choice
-            // compare the current guess letter to the current choice letter
-                // if they're the same position in the word, score EXACT points (green) and break so you don't compare that letter further
-                // if it's in the word, but not the right spot, score CLOSE point (yellow)
-        // keep track of the total score by adding each individual letter's score from above
+    for (int i = 0; i < wordsize; i++)
+    {
+        if (guess[i] == choice[i])
+        {
+            status[i] = EXACT;
+            score +=2;
+            continue;
+        }
+        
+        // check if guess letter appears anywhere in choice but is not in the same position
+        for (int j = 0; j < wordsize; j++)
+        {
+            if (guess[i] == choice[j] && guess[i] != choice[i])
+            {
+                status[i] = CLOSE;
+                score += 1;
+                continue;
+            }
+        }
+    }
 
     return score;
 }
@@ -142,7 +167,24 @@ int check_word(string guess, int wordsize, int status[], string choice)
 void print_word(string guess, int wordsize, int status[])
 {
     // print word character-for-character with correct color coding, then reset terminal font to normal
-    // TODO #6
+    for (int i = 0; i < wordsize; i++)
+    {
+        int color = status[i];
+        switch (color)
+        {
+            case 0:
+                printf(RED "%c" RESET, guess[i]);
+                break;
+
+            case 1:
+                printf(YELLOW "%c" RESET, guess[i]);
+                break;
+
+            case 2:
+                printf(GREEN "%c" RESET, guess[i]);
+                break;
+        }
+    }
 
     printf("\n");
     return;
