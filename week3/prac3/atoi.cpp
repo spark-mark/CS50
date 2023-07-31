@@ -30,14 +30,14 @@ int main(void)
 
 int convert(string input)
 {
-    int n = input.length();
-    int number;
-    int sum;
+    int n = input.length() - 1;
+    int number = 0;
+    int sum = 0;
 
     for (int i = 0; i < input.length(); i++, n--)
     {
-        number = (input[i] - 48) * 10^(n - 1);
-        sum += number;
+        number = (input[i] - 48) * pow(10,n);
+        sum += number; 
     }
 
     return sum;
